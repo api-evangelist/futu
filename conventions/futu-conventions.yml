@@ -1,0 +1,75 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://openapi.futunn.com/futu-api-doc/en/ ;
+  https://github.com/FutunnOpen/py-futu-api (proto2 wire protocol) ;
+  https://github.com/FutunnOpen/futu-agent-hub (futuapi SKILL.md)
+description: >-
+  Cross-cutting request/response semantics for the Futu OpenAPI. Futu is NOT an
+  HTTP/REST API: clients speak a proprietary Protocol Buffers (proto2) protocol
+  over TCP to a local OpenD gateway (default 127.0.0.1:11111), which relays to
+  Futu's servers. These conventions are derived from the published .proto wire
+  protocol and the official developer docs / agent skill.
+transport:
+  gateway: OpenD
+  description: >-
+    OpenD is the gateway program of Futu API, run locally or on a cloud server.
+    It authenticates the user and proxies protobuf requests over TCP.
+  default_address: 127.0.0.1:11111
+  wire_format: Protocol Buffers (proto2); JSON also selectable via ProtoFmt
+  message_shape: each protocol is a numeric protoID with a C2S (request) and S2C (response) message family
+authentication:
+  style: gateway-login
+  description: >-
+    No OAuth/API-key. The user logs into OpenD with a Futu/moomoo (Futubull)
+    account; market-data rights are governed by quote permission levels (LV1/LV2/
+    LV3/SF). Trading additionally requires an explicit unlock.
+  trade_unlock:
+    proto: Trd_UnlockTrade
+    description: Trading write operations require a separate trade-unlock (password) before orders can be placed.
+environments:
+  description: Every trading call carries a trade environment; the agent skill defaults to SIMULATE unless the user explicitly asks for the live environment.
+  values:
+    - SIMULATE   # TrdEnv.SIMULATE — paper trading
+    - REAL       # TrdEnv.REAL — live money
+idempotency:
+  supported: true
+  mechanism: PacketID (anti-replay)
+  description: >-
+    Trading write operations (place/modify/cancel order) carry a Common.PacketID
+    = {connID, serialNo}: the per-connection id returned by InitConnect plus a
+    client-supplied auto-increment serial number. The gateway uses it to reject
+    replayed/duplicate write requests ("交易写操作防重放攻击"), giving trading
+    writes exactly-once-per-serial semantics per connection.
+    See grpc/futu-Trd_PlaceOrder.proto and grpc/futu-Common.proto.
+    order-level dedup: place-order also accepts a free-form `remark` (<=64 bytes)
+    for client order tagging.
+security_field: >-
+  Trading protos are guarded by PacketID; the connection is established with
+  InitConnect (returns connID) and kept alive with KeepAlive.
+security_codes:
+  description: Instrument codes are namespaced by market.
+  examples:
+    - HK.00700   # Tencent (Hong Kong)
+    - US.AAPL    # Apple (US)
+    - SH.600519  # Kweichow Moutai (Shanghai A-share)
+    - SZ.000001  # Ping An Bank (Shenzhen A-share)
+    - CC.BTCUSD  # crypto pair (no slash)
+subscriptions:
+  style: push
+  description: Real-time market data is delivered via subscribe (Qot_Sub / Qot_RegQotPush) then S2C update pushes (Qot_UpdateBasicQot, Qot_UpdateKL, Qot_UpdateTicker, Qot_UpdateOrderBook, ...).
+rate_limiting:
+  style: quota
+  description: >-
+    Access is quota-based, not header-based. Subscription and historical-candlestick
+    quotas scale with account assets/activity (100 / 300 / 1,000 / 2,000). Usage is
+    queryable via the UsedQuota and Qot_RequestHistoryKLQuota protocols.
+error_envelope:
+  description: >-
+    Each S2C response carries retType (0 = success) plus retMsg and errCode fields
+    defined in Common.proto; errors are returned in-band on the response, not via
+    HTTP status codes.
+cross_links:
+  authentication: gateway-login + Trd_UnlockTrade (see conventions.authentication)
+  grpc: grpc/futu-protobuf-index.yml
+  skills: skills/_index.yml

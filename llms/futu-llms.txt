@@ -1,0 +1,34 @@
+# Futu OpenAPI
+
+> Futu (富途 / moomoo) is a digital brokerage and financial-technology company (Futu Holdings, NASDAQ: FUTU) offering the Futu OpenAPI — a programmatic trading and market-data interface for Hong Kong, US, China A-share, Singapore, Malaysia and Japan markets plus options, futures, crypto and event contracts. The API is a proprietary Protocol Buffers (proto2) protocol spoken over TCP to a local OpenD gateway program, with official SDKs for Python, Java, C#, C++ and JavaScript and an official MCP-compatible Agent Skill hub.
+
+## Developer
+
+- [Futu OpenAPI Documentation](https://openapi.futunn.com/futu-api-doc/en/): Official developer documentation (Quote API, Trade API, Basic API).
+- [Authorities and Quota](https://openapi.futunn.com/futu-api-doc/en/intro/authority.html): Permission levels (LV1/LV2/LV3/SF) and subscription/candlestick quotas.
+- [OpenD gateway install](https://openapi.futunn.com/futu-api-doc/en/quick/opend-base.html): Install and run the OpenD gateway (default 127.0.0.1:11111).
+- [Environment setup / SDKs](https://openapi.futunn.com/futu-api-doc/en/quick/env.html): SDK setup for Python, Java, C#, C++, JavaScript.
+- [Python SDK PDF reference](https://static.futunn.com/upload/futu-api/Futu-API-Doc-en-Python.pdf): Full Python API reference.
+
+## SDKs
+
+- [py-futu-api (Python SDK)](https://github.com/FutunnOpen/py-futu-api): Official Futu OpenAPI Python SDK — `pip install futu-api`.
+- [py-moomoo-api](https://github.com/FutunnOpen/py-moomoo-api): moomoo-branded Python SDK — `pip install moomoo-api`.
+- [java-futu-api (Java SDK)](https://github.com/FutunnOpen/java-futu-api): Official Futu OpenAPI Java SDK.
+- [FutunnOpen GitHub org](https://github.com/FutunnOpen): Futu (富途) Quantitative Trading API Team — SDKs, docs, agent hub.
+
+## Protocol
+
+- [Protobuf wire protocol (.proto)](https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb): The complete proto2 request/response protocol (77 files: Basic, Qot_* quotation, Trd_* trading).
+
+## Agent
+
+- [Futu Agent Hub](https://github.com/FutunnOpen/futu-agent-hub): Official MCP-compatible Agent Skill center (Claude Code, Cursor, Claude Desktop, VS Code).
+
+## Specs (API Evangelist)
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/futu/refs/heads/main/apis.yml): APIs.json index for Futu in the API Evangelist network.
+- [Protobuf index](https://raw.githubusercontent.com/api-evangelist/futu/refs/heads/main/grpc/futu-protobuf-index.yml)
+- [Packages / SDKs](https://raw.githubusercontent.com/api-evangelist/futu/refs/heads/main/packages/futu-packages.yml)
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/futu/refs/heads/main/conventions/futu-conventions.yml)
+- [Agent Skills index](https://raw.githubusercontent.com/api-evangelist/futu/refs/heads/main/skills/_index.yml)

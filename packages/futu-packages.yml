@@ -1,0 +1,49 @@
+generated: '2026-07-19'
+method: searched
+source: https://pypi.org/project/futu-api/ ; https://github.com/FutunnOpen ; https://openapi.futunn.com/futu-api-doc/en/quick/env.html
+description: >-
+  First-party Futu OpenAPI client SDKs. The Python SDK is published to PyPI as
+  futu-api by Futu, Inc.; the Java SDK ships from the official FutunnOpen GitHub
+  org. Futu documents SDKs for Python, Java, C#, C++ and JavaScript; only the
+  registry/repos verified as first-party are marked official: true.
+packages:
+  - language: python
+    registry: pypi
+    name: futu-api
+    url: https://pypi.org/project/futu-api/
+    install: pip install futu-api
+    version: 10.9.6908
+    repo: https://github.com/FutunnOpen/py-futu-api
+    official: true
+    notes: Official Futu OpenAPI Python SDK; author Futu, Inc. (ftdev@futunn.com).
+  - language: python
+    registry: github
+    name: py-moomoo-api
+    url: https://github.com/FutunnOpen/py-moomoo-api
+    install: pip install moomoo-api
+    official: true
+    notes: moomoo-branded variant of the Futu Python SDK (international brand).
+  - language: java
+    registry: github
+    name: java-futu-api
+    url: https://github.com/FutunnOpen/java-futu-api
+    official: true
+    notes: Official Futu OpenAPI Java SDK.
+  - language: csharp
+    registry: docs
+    name: Futu API C# SDK
+    url: https://openapi.futunn.com/futu-api-doc/en/quick/env.html
+    official: true
+    notes: C# SDK distributed via the Futu OpenAPI SDK downloads.
+  - language: cpp
+    registry: docs
+    name: Futu API C++ SDK
+    url: https://openapi.futunn.com/futu-api-doc/en/quick/env.html
+    official: true
+    notes: C++ SDK distributed via the Futu OpenAPI SDK downloads.
+  - language: javascript
+    registry: docs
+    name: Futu API JavaScript SDK
+    url: https://openapi.futunn.com/futu-api-doc/en/quick/env.html
+    official: true
+    notes: JavaScript SDK distributed via the Futu OpenAPI SDK downloads.

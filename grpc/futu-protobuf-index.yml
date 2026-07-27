@@ -1,0 +1,111 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb
+description: >-
+  Futu OpenAPI is a proprietary binary protocol (Protocol Buffers, proto2)
+  spoken over TCP to the local OpenD gateway, not an HTTP/REST API. The complete
+  wire protocol is published as .proto definitions in the official Python SDK
+  repository (FutunnOpen/py-futu-api). Each request/response pair is a proto
+  message family (C2S / S2C) keyed by a numeric protoID. Files are grouped into
+  Basic (connection/session), Qot_* (quotation / market data) and Trd_* (trading)
+  services. The eight core files below are saved verbatim; the full set of 77 is
+  indexed by name.
+syntax: proto2
+transport: tcp-to-opend-gateway
+services:
+  - name: basic
+    description: Connection, session, keep-alive, quota and user info.
+    files: [Common.proto, InitConnect.proto, KeepAlive.proto, GetGlobalState.proto, GetUserInfo.proto, GetDelayStatistics.proto, Notify.proto, UsedQuota.proto, Verification.proto, TestCmd.proto]
+  - name: quotation
+    description: Market data — snapshots, K-line, order book, ticks, subscriptions, plates, options, IPO, filters.
+    files_prefix: Qot_
+  - name: trading
+    description: Trading — unlock, place/modify/cancel orders, positions, funds, order and fill lists.
+    files_prefix: Trd_
+saved_verbatim:
+  - grpc/futu-Common.proto
+  - grpc/futu-InitConnect.proto
+  - grpc/futu-KeepAlive.proto
+  - grpc/futu-Trd_Common.proto
+  - grpc/futu-Trd_PlaceOrder.proto
+  - grpc/futu-Qot_Common.proto
+  - grpc/futu-Qot_GetBasicQot.proto
+  - grpc/futu-Qot_GetSecuritySnapshot.proto
+protos:
+  - Common.proto
+  - GetDelayStatistics.proto
+  - GetGlobalState.proto
+  - GetUserInfo.proto
+  - InitConnect.proto
+  - KeepAlive.proto
+  - Notify.proto
+  - Qot_Common.proto
+  - Qot_GetBasicQot.proto
+  - Qot_GetBroker.proto
+  - Qot_GetCapitalDistribution.proto
+  - Qot_GetCapitalFlow.proto
+  - Qot_GetCodeChange.proto
+  - Qot_GetFutureInfo.proto
+  - Qot_GetHistoryKL.proto
+  - Qot_GetHistoryKLPoints.proto
+  - Qot_GetHoldingChangeList.proto
+  - Qot_GetIpoList.proto
+  - Qot_GetKL.proto
+  - Qot_GetMarketState.proto
+  - Qot_GetOptionChain.proto
+  - Qot_GetOptionExpirationDate.proto
+  - Qot_GetOrderBook.proto
+  - Qot_GetOwnerPlate.proto
+  - Qot_GetPlateSecurity.proto
+  - Qot_GetPlateSet.proto
+  - Qot_GetPriceReminder.proto
+  - Qot_GetRT.proto
+  - Qot_GetReference.proto
+  - Qot_GetRehab.proto
+  - Qot_GetSecuritySnapshot.proto
+  - Qot_GetStaticInfo.proto
+  - Qot_GetSubInfo.proto
+  - Qot_GetSuspend.proto
+  - Qot_GetTicker.proto
+  - Qot_GetUserSecurity.proto
+  - Qot_GetUserSecurityGroup.proto
+  - Qot_GetWarrant.proto
+  - Qot_ModifyUserSecurity.proto
+  - Qot_RegQotPush.proto
+  - Qot_RequestHistoryKL.proto
+  - Qot_RequestHistoryKLQuota.proto
+  - Qot_RequestRehab.proto
+  - Qot_RequestTradeDate.proto
+  - Qot_SetPriceReminder.proto
+  - Qot_StockFilter.proto
+  - Qot_Sub.proto
+  - Qot_UpdateBasicQot.proto
+  - Qot_UpdateBroker.proto
+  - Qot_UpdateKL.proto
+  - Qot_UpdateOrderBook.proto
+  - Qot_UpdatePriceReminder.proto
+  - Qot_UpdateRT.proto
+  - Qot_UpdateTicker.proto
+  - TestCmd.proto
+  - Trd_Common.proto
+  - Trd_FlowSummary.proto
+  - Trd_GetAccList.proto
+  - Trd_GetFunds.proto
+  - Trd_GetHistoryOrderFillList.proto
+  - Trd_GetHistoryOrderList.proto
+  - Trd_GetMarginRatio.proto
+  - Trd_GetMaxTrdQtys.proto
+  - Trd_GetOrderFee.proto
+  - Trd_GetOrderFillList.proto
+  - Trd_GetOrderList.proto
+  - Trd_GetPositionList.proto
+  - Trd_ModifyOrder.proto
+  - Trd_Notify.proto
+  - Trd_PlaceOrder.proto
+  - Trd_ReconfirmOrder.proto
+  - Trd_SubAccPush.proto
+  - Trd_UnlockTrade.proto
+  - Trd_UpdateOrder.proto
+  - Trd_UpdateOrderFill.proto
+  - UsedQuota.proto
+  - Verification.proto

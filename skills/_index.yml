@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/FutunnOpen/futu-agent-hub
+description: >-
+  Official Futu-published Agent Skills from the Futu Agent Hub — Futu's official
+  AI Agent skill center that packages the Futu OpenAPI as standardized, MCP-compatible
+  Skills for Claude Code, Cursor, Claude Desktop and VS Code. Saved verbatim.
+skills:
+  - file: futu-futuapi.md
+    name: futuapi
+    author: Futu
+    version: 0.1.1
+    api: Futu OpenAPI (Python SDK futu-api + OpenD gateway)
+    description: >-
+      Futu OpenAPI trading and quotation assistant — query quotes, K-line, snapshots,
+      order book, ticks, time-series; search securities and news; parse option codes,
+      option chains and expirations; place/cancel/modify buy and sell orders; query
+      positions, funds, accounts and orders; subscribe to real-time push; crypto and
+      event-contract (prediction market) trading; technical indicators.
+    operations: [get_kline, get_market_snapshot, get_order_book, get_rt_data, get_cur_kline, subscribe, get_option_chain, place_order, modify_order, cancel_order, get_position_list, get_acc_list, get_funds, get_history_order_list]
+  - file: futu-install-opend.md
+    name: install-futu-opend
+    author: Futu
+    version: 0.1.1
+    api: Futu OpenD gateway
+    description: >-
+      Futu OpenD installation assistant — automatically downloads and installs Futu
+      OpenD and upgrades the Python SDK. Supports Windows, macOS and Linux.
+    operations: []

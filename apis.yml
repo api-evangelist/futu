@@ -1,8 +1,27 @@
 aid: futu
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/futu.png
 name: Futu
-description: 'Futu is a company surfaced as a portfolio company of hongshan, ribbit-capital and added
-  to the API Evangelist network as a stub for enrichment. Sector: technology. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Futu Holdings Limited (NASDAQ: FUTU), operator of the Futubull and moomoo
+  platforms, is a digital brokerage and wealth-management technology company. Its
+  Futu OpenAPI gives developers programmatic access to real-time and historical
+  market data and to trading across Hong Kong, US, China A-share, Singapore,
+  Malaysia and Japan markets, plus options, futures, cryptocurrency and event
+  (prediction) contracts. Rather than an HTTP/REST API, Futu exposes a proprietary
+  Protocol Buffers (proto2) protocol over TCP through a locally run OpenD gateway,
+  with official Python, Java, C#, C++ and JavaScript SDKs and an official
+  MCP-compatible Agent Skill hub. Backed by Hongshan and Ribbit Capital.
 url: https://raw.githubusercontent.com/api-evangelist/futu/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -13,11 +32,35 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Technology
-apis: []
+- FinTech
+- Brokerage
+- Trading
+- Market Data
+- Stocks
+- Options
+- Investing
+- Financial Services
+apis:
+- name: Futu OpenAPI
+  description: >-
+    Programmatic trading and market-data API for global markets, options, futures,
+    crypto and event contracts. Proprietary Protocol Buffers protocol spoken over
+    TCP to a locally run OpenD gateway (default 127.0.0.1:11111) that proxies to
+    Futu's servers; official SDKs for Python, Java, C#, C++ and JavaScript.
+  humanURL: https://openapi.futunn.com/futu-api-doc/en/
+  baseURL: https://openapi.futunn.com
+  x-transport: protobuf-over-tcp-via-opend-gateway
+  properties:
+  - type: Protobuf
+    url: grpc/futu-protobuf-index.yml
+  - type: Conventions
+    url: conventions/futu-conventions.yml
+  - type: Idempotency
+    url: conventions/futu-conventions.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +69,36 @@ maintainers:
 common:
 - type: Website
   url: https://futuholdings.com
+- type: DeveloperPortal
+  url: https://openapi.futunn.com/futu-api-doc/en/
+- type: Documentation
+  url: https://openapi.futunn.com/futu-api-doc/en/
+- type: APIReference
+  url: https://static.futunn.com/upload/futu-api/Futu-API-Doc-en-Python.pdf
+- type: GettingStarted
+  url: https://openapi.futunn.com/futu-api-doc/en/quick/opend-base.html
+- type: GitHubOrganization
+  url: https://github.com/FutunnOpen
+- type: Packages
+  url: packages/futu-packages.yml
+- type: SDKs
+  url: packages/futu-packages.yml
+- type: Protobuf
+  url: grpc/futu-protobuf-index.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: MCPServer
+  url: mcp/futu-mcp.yml
+- type: Conventions
+  url: conventions/futu-conventions.yml
+- type: Idempotency
+  url: conventions/futu-conventions.yml
+- type: DomainSecurity
+  url: security/futu-domain-security.yml
+- type: LLMsTxt
+  url: llms/futu-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
