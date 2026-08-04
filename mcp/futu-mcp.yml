@@ -1,6 +1,7 @@
 generated: '2026-07-19'
 method: searched
-status: skills
+status: published
+status_raw: skills
 source: https://github.com/FutunnOpen/futu-agent-hub
 description: >-
   Futu does not publish a hosted/remote MCP server. Instead it ships the official
