@@ -3,23 +3,29 @@ method: searched
 status: published
 status_raw: skills
 source: https://github.com/FutunnOpen/futu-agent-hub
-description: >-
-  Futu does not publish a hosted/remote MCP server. Instead it ships the official
-  "Futu Agent Hub", an MCP-compatible Agent Skill center that connects AI tools
-  (Claude Code, Cursor, Claude Desktop, VS Code) to the Futu OpenAPI through the
-  local OpenD gateway and the futu-api Python SDK. Agent capability is delivered
-  as packaged Agent Skills (see skills/), not a network MCP endpoint.
+description: Futu does not publish a hosted/remote MCP server. Instead it ships the official "Futu Agent
+  Hub", an MCP-compatible Agent Skill center that connects AI tools (Claude Code, Cursor, Claude Desktop,
+  VS Code) to the Futu OpenAPI through the local OpenD gateway and the futu-api Python SDK. Agent capability
+  is delivered as packaged Agent Skills (see skills/), not a network MCP endpoint.
 server:
   name: futu-agent-hub
   transport: skills
   mcp_compatible: true
-  clients: [claude-code, cursor, claude-desktop, vscode]
+  clients:
+  - claude-code
+  - cursor
+  - claude-desktop
+  - vscode
   requires: OpenD gateway on 127.0.0.1:11111 + futu-api Python SDK
 skills:
-  - futuapi
-  - install-futu-opend
-tools_note: >-
-  Tool surface is the Futu OpenAPI operation set exposed by the futuapi skill
-  (quotes, K-line, snapshots, order book, ticks, option chains, place/modify/cancel
-  order, positions, funds, accounts, subscriptions). See skills/futu-futuapi.md and
-  grpc/futu-protobuf-index.yml for the grounded operation surface.
+- futuapi
+- install-futu-opend
+tools_note: Tool surface is the Futu OpenAPI operation set exposed by the futuapi skill (quotes, K-line,
+  snapshots, order book, ticks, option chains, place/modify/cancel order, positions, funds, accounts,
+  subscriptions). See skills/futu-futuapi.md and grpc/futu-protobuf-index.yml for the grounded operation
+  surface.
+deployment:
+  mode: unclear
+  verified: searched
+  checked: '2026-08-12'
+  source: catalog MCP census
